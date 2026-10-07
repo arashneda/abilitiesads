@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/contactus.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="containers">
+    <a href="index.html">
+      <img class="img" src="./photo-resorces/logo with final color.png" alt="logo" /></a>
+    <form action="https://formspree.io/f/xjgdrekn" id="contactForm" method="Post">
+      <input type="text" name="firstname" id="Firsname" placeholder="First Name" required />
+      <input type="text" name="lastname" id="Lastname" placeholder="Last Name" required />
+      <input type="email" name="email" id="Email" placeholder="Email" required />
+      <input type="tel" name="phone" id="Phone" placeholder="Phone" required />
+
+      <textarea name="message" id="textarea" class="textarea" placeholder="Please send message for us"></textarea>
+
+      <input type="submit" value="Send" id="btn" />
+    </form>
+
+    <div id="successMessage">Your message has been sent successfully ✔</div>
+  </div>
+
+  <div id="toast">Message sent successfully ✔</div>
+
+  <script src="./script/contactus.js"></script>
+</body>
+
+</html>
