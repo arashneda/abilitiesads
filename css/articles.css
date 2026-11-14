@@ -2,7 +2,7 @@
 :root {
   --article-ink: #172536;
   --article-muted: #657487;
-  --article-blue: #315d86;
+  --article-blue: #325e89;
   --article-line: #e2e8ef;
   --article-paper: #ffffff;
   --article-wash: #f4f7fa;
@@ -17,19 +17,25 @@ body.article-page {
   background: transparent;
   font-family: "Roboto", "Vazirmatn", sans-serif;
 }
+body.articles-index {
+  background-image: url("../photo/047.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
 .articles-header,
 .article-header {
-  width: min(1180px, calc(100% - 48px));
-  min-height: 74px;
-  margin: 0 auto;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
 }
 .article-header {
-  min-height: 100px;
-  padding-top: 12px;
+  padding: 20px 0;
 }
 .articles-brand {
   display: inline-flex;
@@ -40,8 +46,10 @@ body.article-page {
 .articles-brand img {
   display: block;
   width: 60px;
-  height: 60px;
+  height: auto;
+  max-width: 60px;
   object-fit: contain;
+  filter: brightness(0);
 }
 .articles-brand-intro {
   margin: 8px auto 24px;
@@ -68,7 +76,7 @@ body.article-page {
   width: 70%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 18px 0 100px;
+  padding: 0 0 100px;
 }
 .articles-intro {
   max-width: 720px;
@@ -83,10 +91,13 @@ body.article-page {
   letter-spacing: .18em;
 }
 .articles-intro h1 {
-  margin: 0 0 14px;
-  font-size: clamp(42px, 6vw, 66px);
-  letter-spacing: -.04em;
-  font-weight: 600;
+  margin: 20px;
+  color: #fefefe;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: normal;
+  font-weight: 700;
 }
 .articles-intro > p:last-child {
   max-width: 650px;
@@ -106,8 +117,8 @@ body.article-page {
   overflow: hidden;
   background: var(--article-paper);
   border: 1px solid var(--article-line);
-  border-radius: 14px;
-  box-shadow: 0 12px 34px rgba(25, 48, 72, .055);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
 }
 .article-card-featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.05fr 1fr; }
 .article-card-image { display: block; min-height: 340px; overflow: hidden; background: #dce3e9; }
@@ -135,20 +146,23 @@ body.article-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: #111111;
-  color: #ffffff;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: #000000;
   text-decoration: none;
   direction: ltr;
-  transition: background .2s ease, transform .2s ease;
+  transition: color .2s ease, transform .2s ease;
 }
 .article-back:hover {
-  background: #333333;
-  transform: translateY(-1px);
+  background: transparent;
+  color: var(--article-blue);
+  transform: scale(1.05);
 }
 .article-back i {
-  color: #ffffff;
-  font-size: 17px;
+  color: inherit;
+  font-size: 20px;
   transform: rotate(180deg);
 }
 .article-title-row {
@@ -206,8 +220,8 @@ body.article-page {
 .reading-progress span { display: block; width: 0; height: 100%; background: #315d86; transform-origin: right center; }
 
 @media (max-width: 820px) {
-  .articles-header, .article-header { width: min(100% - 32px, 680px); min-height: 70px; }
-  .article-header { min-height: 86px; }
+  .articles-header, .article-header { width: 100%; min-height: 0; padding: 20px 0; }
+  .article-header { padding: 20px 0; }
   .articles-nav { gap: 13px; }
   .articles-nav a { font-size: 12px; }
   .articles-main { width: 92%; padding-top: 52px; }
@@ -220,10 +234,10 @@ body.article-page {
   .article-hero { margin-top: 28px; }
 }
 @media (max-width: 560px) {
-  .articles-header { align-items: center; padding: 14px 0; flex-direction: row; gap: 10px; }
-  .articles-brand img { width: 50px; height: 50px; }
+  .articles-header { align-items: center; padding: 20px 0; flex-direction: row; }
+  .articles-brand img { width: 50px; height: auto; max-width: 50px; }
   .articles-brand-intro { margin: 4px auto 20px; }
-  .article-header { padding-top: 8px; }
+  .article-header { padding: 20px 0; }
   .articles-nav { width: 100%; justify-content: space-between; flex-wrap: wrap; }
   .articles-nav a { font-size: 11px; }
   .articles-intro { margin-bottom: 34px; }
@@ -234,7 +248,7 @@ body.article-page {
   .article-card-upcoming { min-height: 0; }
   .article-card-upcoming .article-card-copy { padding: 22px 8px 22px 20px; }
   .upcoming-mark { margin: 24px 20px 0 0; font-size: 30px; }
-  .article-header { min-height: 72px; }
+  .article-header { min-height: 0; }
   .article-title-row {
     grid-template-columns: 34px minmax(0, 1fr) 34px;
     gap: 6px;
