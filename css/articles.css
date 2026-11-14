@@ -224,7 +224,7 @@ body.articles-index {
   .article-header { padding: 20px 0; }
   .articles-nav { gap: 13px; }
   .articles-nav a { font-size: 12px; }
-  .articles-main { width: 92%; padding-top: 52px; }
+  .articles-main { width: 92%; padding-top: 0; }
   .article-card-featured { grid-template-columns: 1fr; }
   .article-card-image, .article-card-image img { min-height: 250px; max-height: 380px; }
   .article-shell { width: 92%; }
