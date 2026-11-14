@@ -73,8 +73,8 @@ body.articles-index {
 .articles-nav a[aria-current="page"],
 .article-back:hover { color: var(--article-blue); }
 .articles-main {
-  width: 70%;
-  max-width: 1180px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   padding: 0 0 100px;
 }
@@ -106,36 +106,91 @@ body.articles-index {
   font-size: 16px;
   line-height: 1.9;
 }
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
-  align-items: stretch;
+/* Article cards mirror the service project cards (Photography / Web Design). */
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
-.article-card {
-  min-width: 0;
+.article-service-card {
+  width: 70%;
+  min-height: 420px;
+  height: 420px;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
   overflow: hidden;
-  background: var(--article-paper);
-  border: 1px solid var(--article-line);
+  background: #f4f2f2;
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  transition: 0.4s;
 }
-.article-card-featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.05fr 1fr; }
-.article-card-image { display: block; min-height: 340px; overflow: hidden; background: #dce3e9; }
-.article-card-image img { width: 100%; height: 100%; min-height: 340px; display: block; object-fit: cover; transition: transform .6s ease; }
-.article-card-image:hover img { transform: scale(1.035); }
-.article-card-copy { padding: clamp(26px, 4vw, 48px); }
-.article-category { margin: 0 0 16px; color: var(--article-blue); font-size: 12px; font-weight: 700; }
-.article-card-copy h2 { margin: 0 0 16px; font-family: "Vazirmatn", sans-serif; font-size: clamp(20px, 2.2vw, 27px); line-height: 1.9; font-weight: 700; }
-.article-card-copy h2 a { color: var(--article-ink); text-decoration: none; }
-.article-card-copy h2 a:hover { color: var(--article-blue); }
-.article-card-copy > p:not(.article-category) { color: var(--article-muted); font-family: "Vazirmatn", sans-serif; font-size: 14px; line-height: 2.1; }
-.read-more { display: inline-flex; gap: 10px; align-items: center; margin-top: 16px; color: var(--article-blue); text-decoration: none; font: 600 14px "Vazirmatn", sans-serif; }
-.article-card-upcoming { min-height: 255px; display: flex; align-items: flex-start; gap: 18px; }
-.article-card-upcoming .article-card-copy { padding: 28px 12px 28px 28px; }
-.article-card-upcoming .article-card-copy h2 { font-size: 19px; }
-.upcoming-mark { margin: 30px 28px 0 0; color: #b8c5d1; font-size: 38px; font-weight: 300; }
-.coming-soon { display: inline-block; margin-top: 8px; padding: 6px 12px; color: #62758a; background: #edf2f6; border-radius: 20px; font: 12px "Vazirmatn", sans-serif; }
+.article-service-card.reverse {
+  flex-direction: row-reverse;
+}
+.article-service-card .service-image {
+  flex: 1;
+  width: auto;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.article-service-card .service-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  transition: 2s ease-in;
+}
+.article-service-card .service-image img:hover {
+  transform: scale(1.1);
+}
+.article-service-card .service-content {
+  flex: 1;
+  min-width: 0;
+}
+.article-service-card .service-item h3 {
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  color: #325e89;
+  font-family: "Roboto", "Vazirmatn", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  border-bottom: 2px solid red;
+  overflow-wrap: anywhere;
+}
+.article-service-card .service-item h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.article-service-card .service-item h3 a:hover {
+  color: #1f3d5c;
+}
+.article-service-card .service-item p {
+  margin: 0 0 16px;
+  color: #444;
+  font-family: "Roboto", "Vazirmatn", sans-serif;
+  font-size: 14px;
+  line-height: 2;
+}
+.read-more {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+  color: #325e89;
+  text-decoration: none;
+  font: 600 14px "Roboto", "Vazirmatn", sans-serif;
+}
 .articles-footer { width: 70%; max-width: 1180px; min-height: 80px; margin: 0 auto; border-top: 1px solid var(--article-line); display: flex; align-items: center; justify-content: space-between; color: var(--article-muted); font-size: 12px; }
 .articles-footer a { color: var(--article-blue); text-decoration: none; }
 
@@ -224,9 +279,34 @@ body.articles-index {
   .article-header { padding: 20px 0; }
   .articles-nav { gap: 13px; }
   .articles-nav a { font-size: 12px; }
-  .articles-main { width: 92%; padding-top: 0; }
-  .article-card-featured { grid-template-columns: 1fr; }
-  .article-card-image, .article-card-image img { min-height: 250px; max-height: 380px; }
+  .articles-main { width: 100%; padding-top: 0; }
+  .article-service-card,
+  .article-service-card.reverse {
+    width: 92%;
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
+    padding: 20px;
+    gap: 0;
+  }
+  .article-service-card .service-content,
+  .article-service-card .service-image {
+    width: 100%;
+    flex: none;
+  }
+  .article-service-card .service-image {
+    height: auto;
+    min-height: 220px;
+  }
+  .article-service-card .service-image img {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+  }
+  .article-service-card .service-item h3 {
+    font-size: 13px;
+    line-height: 15px;
+  }
   .article-shell { width: 92%; }
   .article-layout { grid-template-columns: 1fr; gap: 30px; }
   .article-sidebar { position: static; }
@@ -242,12 +322,9 @@ body.articles-index {
   .articles-nav a { font-size: 11px; }
   .articles-intro { margin-bottom: 34px; }
   .articles-intro > p:last-child { font-size: 14px; }
-  .articles-grid { grid-template-columns: 1fr; gap: 18px; }
-  .article-card-featured { grid-column: auto; }
-  .article-card-copy { padding: 24px; }
-  .article-card-upcoming { min-height: 0; }
-  .article-card-upcoming .article-card-copy { padding: 22px 8px 22px 20px; }
-  .upcoming-mark { margin: 24px 20px 0 0; font-size: 30px; }
+  .articles-list { gap: 20px; }
+  .article-service-card .service-image { min-height: 180px; }
+  .article-service-card .service-item h3 { font-size: 13px; line-height: 15px; }
   .article-header { min-height: 0; }
   .article-title-row {
     grid-template-columns: 34px minmax(0, 1fr) 34px;
