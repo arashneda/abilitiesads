@@ -1,4 +1,5 @@
 /* Articles section only — deliberately isolated from existing site styles. */
+body.articles-index *, body.article-page * { box-sizing: border-box; }
 :root {
   --article-ink: #172536;
   --article-muted: #657487;
@@ -135,6 +136,8 @@ body.articles-index {
 .article-service-card .service-image {
   flex: 1;
   min-width: 0;
+  height: 100%;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -142,10 +145,9 @@ body.articles-index {
 .article-service-card .service-image img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 260px;
+  height: 100%;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: 2s ease-in;
 }
@@ -225,10 +227,12 @@ body.articles-index {
 .article-title-row h1 {
   grid-column: 2;
   grid-row: 1;
+  min-width: 0;
   margin: 0;
   direction: rtl;
-  white-space: nowrap;
+  white-space: normal;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 .article-title-row .article-back {
   grid-column: 1;
@@ -236,7 +240,7 @@ body.articles-index {
   justify-self: start;
 }
 .article-title-spacer { grid-column: 3; grid-row: 1; }
-.article-shell { width: 70%; max-width: 1160px; margin: 0 auto; }
+.article-shell { width: min(92%, 1160px); margin: 0 auto; }
 .article-content { width: 100%; }
 .article-hero { max-width: 920px; margin: 44px auto 60px; text-align: center; }
 .article-kicker { margin: 0 0 18px; color: var(--article-blue); font: 700 12px "Vazirmatn", sans-serif; }
@@ -245,7 +249,7 @@ body.articles-index {
 .article-hero-image { margin: 0; overflow: hidden; border-radius: 12px; background: #e5e9ed; }
 .article-hero-image img { display: block; width: 100%; max-height: 590px; object-fit: cover; }
 .image-note { margin: 10px 0 0; color: #788797; font: 12px/1.8 "Vazirmatn", sans-serif; text-align: right; }
-.article-layout { display: grid; grid-template-columns: 235px minmax(0, 760px); justify-content: space-between; gap: 54px; align-items: start; direction: ltr; }
+.article-layout { display: grid; grid-template-columns: minmax(190px, 235px) minmax(0, 1fr); justify-content: center; gap: clamp(24px, 4vw, 54px); align-items: start; direction: ltr; }
 .article-sidebar { position: sticky; top: 28px; padding: 22px 18px; border: 1px solid var(--article-line); border-radius: 10px; background: rgba(251, 252, 253, .94); direction: rtl; }
 .toc-heading { margin: 0 0 14px; font: 700 14px "Vazirmatn", sans-serif; }
 .article-sidebar nav { display: grid; gap: 4px; }
@@ -279,28 +283,37 @@ body.articles-index {
     width: 92%;
     flex-direction: column;
     padding: 20px;
-    gap: 0;
-    min-height: auto;
+    gap: 20px;
+    height: auto;
+    min-height: 0;
   }
   .article-service-card .service-content,
   .article-service-card .service-image {
+    flex: 0 0 auto;
     width: 100%;
+  }
+  .article-service-card .service-image {
+    height: auto;
+    overflow: visible;
   }
   .article-service-card .service-image img {
     width: 100%;
+    height: auto;
     max-width: 100%;
     max-height: none;
-    border-radius: 16px;
+    border-radius: 0;
   }
   .article-service-card .service-item h3 {
     font-size: 13px;
     line-height: 15px;
   }
   .article-shell { width: 92%; }
-  .article-layout { grid-template-columns: 1fr; gap: 30px; }
+  .article-layout { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .article-sidebar { position: static; }
   .article-sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .article-hero { margin-top: 28px; }
+  .article-hero { margin: 28px auto 44px; }
+  .article-title-row h1 { white-space: normal; }
+  .article-hero-image img { max-height: 60vh; object-fit: contain; }
 }
 @media (max-width: 560px) {
   .articles-header { align-items: center; padding: 20px 0; flex-direction: row; }
@@ -325,14 +338,19 @@ body.articles-index {
   }
   .article-back i { font-size: 14px; }
   .article-hero .article-title-row h1 {
-    font-size: clamp(11px, 3.15vw, 16px);
-    line-height: 1.7;
+    font-size: clamp(13px, 4vw, 17px);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
   }
   .article-deck { font-size: 14px; }
   .article-sidebar nav { grid-template-columns: 1fr; }
   .article-section h2 { font-size: 21px; }
   .article-section h3 { font-size: 17px; }
   .article-section p { font-size: 14px; text-align: right; }
+  .article-shell { width: calc(100% - 32px); }
+  .article-sidebar { padding: 18px 14px; }
+  .article-section { margin-bottom: 38px; }
+  .article-figure { margin: 22px 0 26px; }
   .articles-footer { width: 92%; }
 }
 @media (prefers-reduced-motion: reduce) {
