@@ -356,3 +356,48 @@ body.articles-index {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Article content table — scoped to reading pages; service card styles remain unchanged. */
+.article-table-wrap {
+  width: 100%;
+  margin: 22px 0 32px;
+  overflow-x: auto;
+  border: 1px solid var(--article-line);
+  border-radius: 8px;
+  background: var(--article-paper);
+  -webkit-overflow-scrolling: touch;
+}
+.article-data-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  direction: rtl;
+  color: #344456;
+  background: #fff;
+  font: 13px/2 "Vazirmatn", sans-serif;
+  text-align: right;
+}
+.article-data-table caption {
+  padding: 12px 14px;
+  color: #1d3146;
+  background: #f2f6f9;
+  font-weight: 700;
+  text-align: right;
+}
+.article-data-table th,
+.article-data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--article-line);
+  vertical-align: top;
+}
+.article-data-table th {
+  color: #1d3146;
+  background: #f4f7fa;
+  font-weight: 700;
+}
+.article-data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.article-data-table tbody tr:nth-child(even) {
+  background: #fbfcfd;
+}
