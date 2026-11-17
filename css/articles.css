@@ -257,13 +257,36 @@ body.articles-index {
 .article-sidebar nav a:hover,
 .article-sidebar nav a.active { color: var(--article-blue); background: #eaf0f5; }
 .article-body { min-width: 0; color: #344456; font-family: "Vazirmatn", sans-serif; }
+
+/* Use Persian numerals for browser-generated ordered-list markers in article content. */
+body.article-page .article-body ol,
+body.article-page .references ol {
+  list-style-type: persian;
+}
+
 .article-section { margin: 0 0 52px; scroll-margin-top: 30px; }
 .article-section h2 { margin: 0 0 18px; color: #1d3146; font-size: 24px; line-height: 1.8; font-weight: 700; }
 .article-section h3 { margin: 0 0 14px; color: #294a69; font-size: 19px; line-height: 1.9; }
 .article-section p { margin: 0 0 18px; font-size: 15px; line-height: 2.35; text-align: justify; }
-.article-figure { margin: 30px 0 34px; }
-.article-figure img { display: block; width: 100%; height: auto; border-radius: 9px; background: #edf1f4; }
+.article-figure { width: 100%; margin: 30px 0 38px; }
+.article-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  object-fit: contain;
+  background: transparent;
+}
+.article-figure--portrait img {
+  width: min(100%, 460px);
+  margin-inline: auto;
+}
 .article-figure figcaption { margin-top: 10px; color: #758395; font-size: 12px; line-height: 2; }
+
 .concept-note { margin: 22px 0; padding: 18px 20px; border-right: 3px solid #6c8eae; background: #f2f6f9; color: #43566a; font-size: 14px; line-height: 2.2; }
 .references ol { padding-right: 22px; }
 .references li { padding-right: 5px; margin-bottom: 17px; font: 13px/2.2 "Roboto", "Vazirmatn", sans-serif; direction: ltr; text-align: left; overflow-wrap: anywhere; }
