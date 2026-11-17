@@ -276,8 +276,8 @@ body.articles-index {
 .article-image-grid img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
   border-radius: 9px;
   background: #edf1f4;
 }
