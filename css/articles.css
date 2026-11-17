@@ -268,32 +268,24 @@ body.article-page .references ol {
 .article-section h2 { margin: 0 0 18px; color: #1d3146; font-size: 24px; line-height: 1.8; font-weight: 700; }
 .article-section h3 { margin: 0 0 14px; color: #294a69; font-size: 19px; line-height: 1.9; }
 .article-section p { margin: 0 0 18px; font-size: 15px; line-height: 2.35; text-align: justify; }
-.article-figure { margin: 30px 0 34px; }
-.article-figure img { display: block; width: 100%; height: auto; border-radius: 9px; background: #edf1f4; }
-.article-figure figcaption { margin-top: 10px; color: #758395; font-size: 12px; line-height: 2; }
-
-.article-image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin: 30px 0 38px;
-  direction: rtl;
-}
-.article-image-grid figure { min-width: 0; margin: 0; }
-.article-image-grid img {
+.article-figure { width: 100%; margin: 30px 0 38px; }
+.article-figure img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   object-fit: contain;
-  border-radius: 9px;
-  background: #edf1f4;
+  background: transparent;
 }
-.article-image-grid figcaption {
-  margin-top: 9px;
-  color: #758395;
-  font-size: 12px;
-  line-height: 2;
+.article-figure--portrait img {
+  width: min(100%, 460px);
+  margin-inline: auto;
 }
+.article-figure figcaption { margin-top: 10px; color: #758395; font-size: 12px; line-height: 2; }
 
 .concept-note { margin: 22px 0; padding: 18px 20px; border-right: 3px solid #6c8eae; background: #f2f6f9; color: #43566a; font-size: 14px; line-height: 2.2; }
 .references ol { padding-right: 22px; }
@@ -304,7 +296,6 @@ body.article-page .references ol {
 .reading-progress span { display: block; width: 0; height: 100%; background: #315d86; transform-origin: right center; }
 
 @media (max-width: 820px) {
-  .article-image-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .articles-header, .article-header { width: 100%; min-height: 0; padding: 20px 0; }
   .article-header { padding: 20px 0; }
   .articles-nav { gap: 13px; }
@@ -348,7 +339,6 @@ body.article-page .references ol {
   .article-hero-image img { max-height: 60vh; object-fit: contain; }
 }
 @media (max-width: 560px) {
-  .article-image-grid { grid-template-columns: minmax(0, 1fr); }
   .articles-header { align-items: center; padding: 20px 0; flex-direction: row; }
   .articles-brand img { width: 50px; height: auto; max-width: 50px; }
   .articles-brand-intro { margin: 4px auto 20px; }
