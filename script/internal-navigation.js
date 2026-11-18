@@ -44,6 +44,10 @@
       const isServiceSection = link.dataset.navSection === "services" &&
         (file === "services.html" || serviceFiles.includes(file));
 
+      const isCurrent = isExactPage || isArticleDetail || isServiceSection;
+      const row = link.closest(".internal-nav-row");
+      row?.classList.toggle("is-current", isCurrent);
+
       if (isExactPage) {
         link.setAttribute("aria-current", "page");
       } else if (isArticleDetail || isServiceSection) {
@@ -81,7 +85,8 @@
       top: body.style.top,
       left: body.style.left,
       right: body.style.right,
-      width: body.style.width
+      width: body.style.width,
+      rootOverflow: root.style.overflow
     };
 
     root.style.overflow = "hidden";
@@ -95,7 +100,7 @@
   function unlockPageScroll() {
     if (!previousBodyStyles) return;
 
-    root.style.overflow = "";
+    root.style.overflow = previousBodyStyles.rootOverflow;
     body.style.position = previousBodyStyles.position;
     body.style.top = previousBodyStyles.top;
     body.style.left = previousBodyStyles.left;
