@@ -1,3 +1,9 @@
+/* Keep the vertical scrollbar gutter reserved while the navigation locks page scrolling.
+   This prevents the page content from shifting horizontally when the menu opens. */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* Internal navigation — first implementation on article-visual-attention.html only.
    Palette: #133a5e is already used by the site's existing photography UI. */
 body.internal-nav-page .article-header,
