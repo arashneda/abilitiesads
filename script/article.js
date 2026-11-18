@@ -45,6 +45,13 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let scrollAnimationFrame = null;
 
+  window.addEventListener("internal-navigation:cancel-scroll", () => {
+    if (scrollAnimationFrame !== null) {
+      window.cancelAnimationFrame(scrollAnimationFrame);
+      scrollAnimationFrame = null;
+    }
+  });
+
   function easeInOutCubic(progress) {
     return progress < 0.5
       ? 4 * progress * progress * progress
