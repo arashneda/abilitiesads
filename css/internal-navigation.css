@@ -33,8 +33,13 @@ body.article-page .internal-nav-toggle span {
   width: 20px;
   height: 4px;
   border-radius: 5px;
-  background: #b8c7d8;
+  background: #000;
   transition: top .4s, transform .4s, opacity .4s;
+}
+
+/* Add this class to internal pages with a dark header/background. */
+body.internal-nav-dark .internal-nav-toggle span {
+  background: #fff;
 }
 
 body.article-page .internal-nav-toggle span:first-child { top: 11px; }
@@ -137,6 +142,7 @@ body.article-page .internal-nav-submenu a {
   text-decoration: none;
   font-size: 16px;
   line-height: 1.45;
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   text-align: left;
   transition: color .22s ease, background-color .22s ease, border-color .22s ease;
@@ -171,6 +177,7 @@ body.article-page .internal-nav-submenu-toggle {
   border: 0;
   background: transparent;
   color: #fff;
+  font: inherit;
   cursor: pointer;
 }
 
@@ -240,25 +247,11 @@ body.article-page .internal-nav-back-to-top.is-visible {
   transform: translateY(0);
 }
 
-body.article-page .internal-nav-back-to-top::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  margin-top: 5px;
-  border-top: 2px solid #133a5e;
-  border-left: 2px solid #133a5e;
-  transform: rotate(45deg);
-}
-
-body.article-page .internal-nav-back-to-top::after {
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: 50%;
-  width: 2px;
-  height: 13px;
-  background: #133a5e;
-  transform: translateX(-50%);
+body.article-page .internal-nav-back-to-top i {
+  color: #000;
+  font-size: 20px;
+  line-height: 1;
+  transform: rotate(-90deg);
 }
 
 @media (max-width: 760px) {
