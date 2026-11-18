@@ -1,0 +1,300 @@
+/* Internal navigation — first implementation on article-visual-attention.html only.
+   Palette: #133a5e is already used by the site's existing photography UI. */
+body.internal-nav-page .article-header,
+body.internal-nav-page .page-header,
+body.internal-nav-page .articles-header {
+  position: relative;
+}
+
+body.internal-nav-page.internal-nav-no-header .internal-nav-toggle {
+  position: fixed;
+  top: 20px;
+  transform: none;
+}
+
+body.internal-nav-page .internal-nav-toggle {
+  position: absolute;
+  z-index: 1402;
+  left: clamp(18px, 4vw, 48px);
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.internal-nav-page .internal-nav-toggle:focus-visible,
+body.internal-nav-page .internal-nav-back-to-top:focus-visible,
+body.internal-nav-page .internal-nav-submenu-toggle:focus-visible {
+  outline: 2px solid #e33445;
+  outline-offset: 4px;
+}
+
+body.internal-nav-page .internal-nav-toggle span {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 4px;
+  border-radius: 5px;
+  background: #000;
+  transition: top .4s, transform .4s, opacity .4s;
+}
+
+/* Add this class to internal pages with a dark header/background. */
+body.internal-nav-dark .internal-nav-toggle span {
+  background: #fff;
+}
+
+body.internal-nav-page .internal-nav-toggle span:first-child { top: 11px; }
+body.internal-nav-page .internal-nav-toggle span:nth-child(2) { top: 20px; }
+body.internal-nav-page .internal-nav-toggle span:nth-child(3) { top: 29px; }
+
+body.internal-nav-page .internal-nav-toggle.is-open span:first-child {
+  top: 20px;
+  transform: rotate(45deg);
+}
+
+body.internal-nav-page .internal-nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+body.internal-nav-page .internal-nav-toggle.is-open span:nth-child(3) {
+  top: 20px;
+  transform: rotate(-45deg);
+}
+
+body.internal-nav-page .internal-nav-overlay {
+  position: fixed;
+  z-index: 1300;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: rgba(0, 0, 0, .58);
+  opacity: 0;
+  visibility: hidden;
+  cursor: default;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+body.internal-nav-page .internal-nav-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.internal-nav-page .internal-nav-panel {
+  position: fixed;
+  z-index: 1301;
+  inset: 0 auto 0 0;
+  width: clamp(280px, 25vw, 400px);
+  max-width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0;
+  background: #133a5e;
+  color: #fff;
+  direction: ltr;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 12px 0 36px rgba(0, 0, 0, .2);
+  transform: translateX(-102%);
+  visibility: hidden;
+  transition: transform 1s cubic-bezier(.22, 1, .36, 1), visibility 1s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.35) transparent;
+}
+
+body.internal-nav-page .internal-nav-panel.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+body.internal-nav-page .internal-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 92px 28px 34px;
+  list-style: none;
+}
+
+body.internal-nav-page .internal-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+body.internal-nav-page .internal-nav-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 54px;
+  border-bottom: 1px solid rgba(227, 52, 69, .9);
+}
+
+body.internal-nav-page .internal-nav-link,
+body.internal-nav-page .internal-nav-submenu a {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  padding: 13px 4px;
+  color: #fff;
+  background: transparent;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.45;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-align: left;
+  transition: color .22s ease, background-color .22s ease, border-color .22s ease;
+}
+
+body.internal-nav-page .internal-nav-link:hover,
+body.internal-nav-page .internal-nav-submenu a:hover {
+  color: #d7e4f0;
+}
+
+body.internal-nav-page .internal-nav-link[aria-current="page"],
+body.internal-nav-page .internal-nav-link[aria-current="location"],
+body.internal-nav-page .internal-nav-submenu a[aria-current="page"] {
+  color: #ff5361;
+  font-weight: 700;
+}
+
+body.internal-nav-page .internal-nav-row.is-current {
+  border-bottom-width: 3px;
+}
+
+body.internal-nav-page .internal-nav-submenu a[aria-current="page"] {
+  border-bottom: 3px solid #ff5361;
+}
+
+body.internal-nav-page .internal-nav-submenu-toggle {
+  position: relative;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+body.internal-nav-page .internal-nav-chevron {
+  width: 9px;
+  height: 9px;
+  margin-top: -5px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .3s ease, color .2s ease;
+}
+
+body.internal-nav-page .internal-nav-submenu-toggle[aria-expanded="true"] .internal-nav-chevron {
+  margin-top: 5px;
+  transform: rotate(225deg);
+}
+
+body.internal-nav-page .internal-nav-submenu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height .38s ease, opacity .28s ease, visibility .38s ease;
+}
+
+body.internal-nav-page .internal-nav-submenu.is-open {
+  max-height: 420px;
+  opacity: 1;
+  visibility: visible;
+}
+
+body.internal-nav-page .internal-nav-submenu a {
+  min-height: 44px;
+  padding: 10px 14px 10px 22px;
+  border-bottom: 1px solid rgba(227, 52, 69, .55);
+  font-size: 14px;
+}
+
+body.internal-nav-page .internal-nav-submenu a:last-child {
+  border-bottom: 0;
+}
+
+body.internal-nav-page .internal-nav-back-to-top {
+  position: fixed;
+  z-index: 1100;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: rgba(255, 255, 255, .72);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+}
+
+body.internal-nav-page .internal-nav-back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body.internal-nav-page .internal-nav-back-to-top i {
+  color: #000;
+  font-size: 20px;
+  line-height: 1;
+  transform: rotate(-90deg);
+}
+
+@media (max-width: 760px) {
+  body.internal-nav-page .internal-nav-panel {
+    width: clamp(240px, 50vw, 360px);
+  }
+
+  body.internal-nav-page .internal-nav-list {
+    padding: 82px 22px 30px;
+  }
+
+  body.internal-nav-page .internal-nav-link {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  body.internal-nav-page .internal-nav-panel {
+    width: 70vw;
+    min-width: 220px;
+  }
+
+  body.internal-nav-page .internal-nav-list {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.internal-nav-page .internal-nav-toggle span,
+  body.internal-nav-page .internal-nav-overlay,
+  body.internal-nav-page .internal-nav-panel,
+  body.internal-nav-page .internal-nav-chevron,
+  body.internal-nav-page .internal-nav-submenu,
+  body.internal-nav-page .internal-nav-back-to-top {
+    transition-duration: .01ms !important;
+  }
+}
