@@ -22,10 +22,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  min-height: 100%;
+  background: url(../photo/075.webp) center/cover no-repeat;
+}
 body {
   font-family: Roboto, sans-serif;
   min-height: 100vh;
-  background: url(../photo/075.webp) center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
