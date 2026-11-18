@@ -17,12 +17,46 @@
   <link rel="stylesheet" href="./css/services.css" />
 
   <title>Services</title>
+  <link rel="stylesheet" href="./css/internal-navigation.css">
 </head>
 
-<body>
+<body class="internal-nav-page internal-nav-dark">
   <header class="page-header">
     <a href="index.html"><img src="./photo-resorces/Untitled-1.png" alt="Company Logo" class="site-logo" /></a>
+  <button
+    class="internal-nav-toggle"
+    id="internalNavToggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-controls="internalNavPanel"
+    aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   </header>
+
+  <button class="internal-nav-overlay" id="internalNavOverlay" type="button" aria-label="Close navigation menu" aria-hidden="true" tabindex="-1"></button>
+  <aside class="internal-nav-panel" id="internalNavPanel" aria-label="Main navigation" aria-hidden="true" tabindex="-1" inert>
+  <nav aria-label="Main navigation">
+    <ul class="internal-nav-list">
+      <li class="internal-nav-item"><div class="internal-nav-row"><a class="internal-nav-link" data-nav-link href="./index.html">Home</a></div></li>
+      <li class="internal-nav-item" data-submenu-group="services">
+        <div class="internal-nav-row">
+          <a class="internal-nav-link" data-nav-link data-nav-section="services" href="./Services.html">Services</a>
+          <button class="internal-nav-submenu-toggle" type="button" aria-label="Toggle Services submenu" aria-controls="internalServicesSubmenu" aria-expanded="false"><span class="internal-nav-chevron" aria-hidden="true"></span></button>
+        </div>
+        <div class="internal-nav-submenu" id="internalServicesSubmenu" aria-hidden="true" inert>
+          <a data-nav-link href="./Photography.html">Photography</a>
+          <a data-nav-link href="./Graphic-Design.html">Graphic Design</a>
+          <a data-nav-link href="./Web-Design.html">Web Design</a>
+          <a data-nav-link href="./addVideoAi.html">Ads Video &amp; AI</a>
+        </div>
+      </li>
+      <li class="internal-nav-item"><div class="internal-nav-row"><a class="internal-nav-link" data-nav-link data-nav-section="articles" href="./Articles.html">Articles</a></div></li>
+      <li class="internal-nav-item"><div class="internal-nav-row"><a class="internal-nav-link" data-nav-link href="./aboutus.html">About Us</a></div></li>
+      <li class="internal-nav-item"><div class="internal-nav-row"><a class="internal-nav-link" data-nav-link href="./contactus.html">Contact Us</a></div></li>
+    </ul>
+  </nav>
+</aside>
 
   <section class="service-section">
     <div class="service-image">
@@ -135,6 +169,8 @@
     </div>
     </div>
   </section>
+<button class="internal-nav-back-to-top" id="internalNavBackToTop" type="button" aria-label="Back to top" aria-hidden="true" tabindex="-1"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i></button>
+  <script src="./script/internal-navigation.js" defer></script>
 </body>
 
 </html>
